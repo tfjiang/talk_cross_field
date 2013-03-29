@@ -1,0 +1,81 @@
+\usepackage{epstopdf}
+\usepackage[inline]{asymptote}
+
+\mode<presentation> %?
+
+\usetheme{Frankfurt}
+\usepackage{helvet}
+\usepackage{mathptmx}
+%\usefonttheme{professionalfonts}
+\usefonttheme[onlymath]{serif}
+\usefonttheme{structurebold}
+
+%\renewcommand{\familydefault}{Futura}
+%\setsansfont{Verdana}
+
+\setlength{\unitlength}{\paperwidth}
+
+% width, height, title, content
+\newcommand{\SizedBlock}[4]{
+  \begin{block}{#3}
+    \parbox[t][#2\paperwidth][t]{#1\paperwidth}{#4}    
+  \end{block}
+}
+
+% w1, c1, w2, c2
+\newcommand{\TwoColumns}[4]{
+  \vspace{-0.02\paperwidth}
+  \begin{columns}[t]
+    \begin{column}{#1\paperwidth}
+      #2
+    \end{column}\hspace{-0.02\paperwidth}
+    \begin{column}{#3\paperwidth}
+      #4
+    \end{column}
+  \end{columns}
+}
+
+% w1, c1, w2, c2, w3, c3
+\newcommand{\ThreeColumns}[6]{
+  \vspace{-0.02\paperwidth}
+  \begin{columns}[t]
+    \begin{column}{#1\paperwidth}
+      #2
+    \end{column}\hspace{-0.07\paperwidth}
+    \begin{column}{#3\paperwidth}
+      #4
+    \end{column}\hspace{-0.07\paperwidth}
+	\begin{column}{#5\paperwidth}
+      #6
+    \end{column}
+  \end{columns}
+}
+
+% height, title1, content1, title2, content2
+\newcommand{\TwoColumnBlocksW}[6]{
+  \TwoColumns{
+        #6}{
+        \SizedBlock{#6}{#1}{#2}{#3}}{
+        #6}{
+        \SizedBlock{#6}{#1}{#4}{#5}}
+}
+
+% height, title1, content1, title2, content2
+\newcommand{\TwoColumnBlocks}[5]{
+  \TwoColumnBlocksW{#1}{#2}{#3}{#4}{#5}{0.4}
+}
+
+% height, title1, content1, title2, content2, title3, content3
+\newcommand{\ThreeColumnBlocks}[7]{
+  \ThreeColumns{
+        0.24}{
+        \SizedBlock{0.24}{#1}{#2}{#3}}{
+        0.24}{
+        \SizedBlock{0.24}{#1}{#4}{#5}}{
+        0.24}{
+        \SizedBlock{0.24}{#1}{#6}{#7}}
+}
+
+\newcommand{\PutPic}[3]{
+  \put(#1){\includegraphics[#2\paperwidth]{./img/#3}}
+}
